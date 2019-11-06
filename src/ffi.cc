@@ -188,7 +188,7 @@ NAN_METHOD(FFI::FFIPrepCif) {
 
   cif = Buffer::Data(cif_buf.As<Object>());
   nargs = Nan::To<uint32_t>(info[1]).FromJust();
-  rtype = Buffer::Data(Nan::To<v8::Object>(info[2]));
+  rtype = Buffer::Data(Nan::To<v8::Object>(info[2]).ToLocalChecked());
   atypes = Buffer::Data(Nan::To<v8::Object>info[3]));
   abi = (ffi_abi)Nan::To<uint32_t>(info[4]).FromJust();
 
@@ -304,10 +304,10 @@ NAN_METHOD(FFI::FFICallAsync) {
   p->result = FFI_OK;
 
   // store a persistent references to all the Buffers and the callback function
-  p->cif = Buffer::Data(info[0]->ToObject());
-  p->fn = Buffer::Data(info[1]->ToObject());
-  p->res = Buffer::Data(info[2]->ToObject());
-  p->argv = Buffer::Data(info[3]->ToObject());
+  p->cif = Buffer::Data(Nan::To<v8::Object>(info[0]));
+  p->fn = Buffer::Data(Nan::To<v8::Object>(info[1]));
+  p->res = Buffer::Data(Nan::To<v8::Object>(info[2]));
+  p->argv = Buffer::Data(Nan::To<v8::Object>(info[3]));
 
   Local<Function> callback = Local<Function>::Cast(info[4]);
   p->callback = new Nan::Callback(callback);
