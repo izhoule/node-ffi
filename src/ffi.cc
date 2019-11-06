@@ -48,11 +48,11 @@ NAN_MODULE_INIT(FFI::InitializeBindings) {
   Nan::Set(target, Nan::New<String>("ffi_prep_cif").ToLocalChecked(),
     Nan::GetFunction(Nan::New<FunctionTemplate>(FFIPrepCif)).ToLocalChecked());
   Nan::Set(target, Nan::New<String>("ffi_prep_cif_var").ToLocalChecked(),
-    Nan::New<FunctionTemplate>(FFIPrepCifVar)->GetFunction());
+    Nan::GetFunction(Nan::New<FunctionTemplate>(FFIPrepCifVar).ToLocalChecked());
   Nan::Set(target, Nan::New<String>("ffi_call").ToLocalChecked(),
-    Nan::New<FunctionTemplate>(FFICall)->GetFunction());
+    Nan::GetFunction(Nan::New<FunctionTemplate>(FFICall)).ToLocalChecked());
   Nan::Set(target, Nan::New<String>("ffi_call_async").ToLocalChecked(),
-    Nan::New<FunctionTemplate>(FFICallAsync)->GetFunction());
+    Nan::GetFunction(Nan::New<FunctionTemplate>(FFICallAsync)).ToLocalChecked());
 
   // `ffi_status` enum values
   SET_ENUM_VALUE(FFI_OK);
