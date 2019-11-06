@@ -231,11 +231,11 @@ NAN_METHOD(FFI::FFIPrepCifVar) {
   }
 
   cif = Buffer::Data(cif_buf.As<Object>());
-  fargs = info[1]->Uint32Value();
-  targs = info[2]->Uint32Value();
-  rtype = Buffer::Data(info[3]->ToObject());
-  atypes = Buffer::Data(info[4]->ToObject());
-  abi = (ffi_abi)info[5]->Uint32Value();
+  fargs = Nan::To<uint32_t>(info[1]).FromJust()
+  targs = Nan::To<uint32_t>(info[2]).FromJust();
+  rtype = Buffer::Data(Nan::To<v8::Object>(info[3]));
+  atypes = Buffer::Data(Nan::To<v8::Object>(info[4]));
+  abi = (ffi_abi)Nan::To<uint32_t>(info[5]).FromJust();
 
   status = ffi_prep_cif_var(
       (ffi_cif *)cif,
@@ -262,10 +262,10 @@ NAN_METHOD(FFI::FFICall) {
     return THROW_ERROR_EXCEPTION("ffi_call() requires 4 arguments!");
   }
 
-  char *cif = Buffer::Data(info[0]->ToObject());
-  char *fn = Buffer::Data(info[1]->ToObject());
-  char *res = Buffer::Data(info[2]->ToObject());
-  char *fnargs = Buffer::Data(info[3]->ToObject());
+  char *cif = Buffer::Data(Nan::To<v8::Object>(info[0]));
+  char *fn = Buffer::Data(Nan::To<v8::Object>(info[1]));
+  char *res = Buffer::Data(Nan::To<v8::Object>(info[2]));
+  char *fnargs = Buffer::Data(Nan::To<v8::Object>(info[3]));
 
 #if __OBJC__ || __OBJC2__
     @try {
