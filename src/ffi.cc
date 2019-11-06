@@ -187,10 +187,10 @@ NAN_METHOD(FFI::FFIPrepCif) {
   }
 
   cif = Buffer::Data(cif_buf.As<Object>());
-  nargs = info[1]->Uint32Value();
+  nargs = Nan::To<uint32_t>(info[1]).FromJust();
   rtype = Buffer::Data(info[2]->ToObject());
   atypes = Buffer::Data(info[3]->ToObject());
-  abi = (ffi_abi)info[4]->Uint32Value();
+  abi = (ffi_abi)Nan::To<uint32_t>(info[4]).FromJust();
 
   status = ffi_prep_cif(
       (ffi_cif *)cif,
