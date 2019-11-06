@@ -189,7 +189,7 @@ NAN_METHOD(FFI::FFIPrepCif) {
   cif = Buffer::Data(cif_buf.As<Object>());
   nargs = Nan::To<uint32_t>(info[1]).FromJust();
   rtype = Buffer::Data(Nan::To<v8::Object>(info[2]).ToLocalChecked());
-  atypes = Buffer::Data(Nan::To<v8::Object>info[3]));
+  atypes = Buffer::Data(Nan::To<v8::Object>info[3]).ToLocalChecked());
   abi = (ffi_abi)Nan::To<uint32_t>(info[4]).FromJust();
 
   status = ffi_prep_cif(
@@ -233,8 +233,8 @@ NAN_METHOD(FFI::FFIPrepCifVar) {
   cif = Buffer::Data(cif_buf.As<Object>());
   fargs = Nan::To<uint32_t>(info[1]).FromJust()
   targs = Nan::To<uint32_t>(info[2]).FromJust();
-  rtype = Buffer::Data(Nan::To<v8::Object>(info[3]));
-  atypes = Buffer::Data(Nan::To<v8::Object>(info[4]));
+  rtype = Buffer::Data(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+  atypes = Buffer::Data(Nan::To<v8::Object>(info[4]).ToLocalChecked());
   abi = (ffi_abi)Nan::To<uint32_t>(info[5]).FromJust();
 
   status = ffi_prep_cif_var(
@@ -262,10 +262,10 @@ NAN_METHOD(FFI::FFICall) {
     return THROW_ERROR_EXCEPTION("ffi_call() requires 4 arguments!");
   }
 
-  char *cif = Buffer::Data(Nan::To<v8::Object>(info[0]));
-  char *fn = Buffer::Data(Nan::To<v8::Object>(info[1]));
-  char *res = Buffer::Data(Nan::To<v8::Object>(info[2]));
-  char *fnargs = Buffer::Data(Nan::To<v8::Object>(info[3]));
+  char *cif = Buffer::Data(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+  char *fn = Buffer::Data(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+  char *res = Buffer::Data(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+  char *fnargs = Buffer::Data(Nan::To<v8::Object>(info[3]).ToLocalChecked());
 
 #if __OBJC__ || __OBJC2__
     @try {
@@ -304,10 +304,10 @@ NAN_METHOD(FFI::FFICallAsync) {
   p->result = FFI_OK;
 
   // store a persistent references to all the Buffers and the callback function
-  p->cif = Buffer::Data(Nan::To<v8::Object>(info[0]));
-  p->fn = Buffer::Data(Nan::To<v8::Object>(info[1]));
-  p->res = Buffer::Data(Nan::To<v8::Object>(info[2]));
-  p->argv = Buffer::Data(Nan::To<v8::Object>(info[3]));
+  p->cif = Buffer::Data(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+  p->fn = Buffer::Data(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+  p->res = Buffer::Data(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+  p->argv = Buffer::Data(Nan::To<v8::Object>(info[3]).ToLocalChecked());
 
   Local<Function> callback = Local<Function>::Cast(info[4]);
   p->callback = new Nan::Callback(callback);
