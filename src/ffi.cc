@@ -181,7 +181,7 @@ NAN_METHOD(FFI::FFIPrepCif) {
     return THROW_ERROR_EXCEPTION("ffi_prep_cif() requires 5 arguments!");
   }
 
-  Handle<Value> cif_buf = info[0];
+  v8::Handle<v8::Value> cif_buf = info[0];
   if (!Buffer::HasInstance(cif_buf)) {
     return THROW_ERROR_EXCEPTION("prepCif(): Buffer required as first arg");
   }
