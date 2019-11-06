@@ -188,8 +188,8 @@ NAN_METHOD(FFI::FFIPrepCif) {
 
   cif = Buffer::Data(cif_buf.As<Object>());
   nargs = Nan::To<uint32_t>(info[1]).FromJust();
-  rtype = Buffer::Data(info[2]->ToObject());
-  atypes = Buffer::Data(info[3]->ToObject());
+  rtype = Buffer::Data(Nan::To<v8::Object>(info[2]));
+  atypes = Buffer::Data(Nan::To<v8::Object>info[3]));
   abi = (ffi_abi)Nan::To<uint32_t>(info[4]).FromJust();
 
   status = ffi_prep_cif(
@@ -225,7 +225,7 @@ NAN_METHOD(FFI::FFIPrepCifVar) {
     return THROW_ERROR_EXCEPTION("ffi_prep_cif() requires 5 arguments!");
   }
 
-  Handle<Value> cif_buf = info[0];
+  v8::Local<v8::Value> cif_buf = info[0];
   if (!Buffer::HasInstance(cif_buf)) {
     return THROW_ERROR_EXCEPTION("prepCifVar(): Buffer required as first arg");
   }
