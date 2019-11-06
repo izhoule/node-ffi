@@ -48,7 +48,7 @@ NAN_MODULE_INIT(FFI::InitializeBindings) {
   Nan::Set(target, Nan::New<String>("ffi_prep_cif").ToLocalChecked(),
     Nan::GetFunction(Nan::New<FunctionTemplate>(FFIPrepCif)).ToLocalChecked());
   Nan::Set(target, Nan::New<String>("ffi_prep_cif_var").ToLocalChecked(),
-    Nan::GetFunction(Nan::New<FunctionTemplate>(FFIPrepCifVar));
+    Nan::GetFunction(Nan::New<FunctionTemplate>(FFIPrepCifVar)));
   Nan::Set(target, Nan::New<String>("ffi_call").ToLocalChecked(),
     Nan::GetFunction(Nan::New<FunctionTemplate>(FFICall)).ToLocalChecked());
   Nan::Set(target, Nan::New<String>("ffi_call_async").ToLocalChecked(),
