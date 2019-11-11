@@ -231,7 +231,7 @@ NAN_METHOD(FFI::FFIPrepCifVar) {
   }
 
   cif = Buffer::Data(cif_buf.As<Object>());
-  fargs = Nan::To<uint32_t>(info[1]).FromJust()
+  fargs = Nan::To<uint32_t>(info[1]).FromJust();
   targs = Nan::To<uint32_t>(info[2]).FromJust();
   rtype = Buffer::Data(Nan::To<v8::Object>(info[3]).ToLocalChecked());
   atypes = Buffer::Data(Nan::To<v8::Object>(info[4]).ToLocalChecked());
