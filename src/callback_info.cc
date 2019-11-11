@@ -209,7 +209,8 @@ void CallbackInfo::Initialize(Local<Object> target) {
   Nan::HandleScope scope;
 
 	Nan::Set(target, Nan::New<String>("Callback").ToLocalChecked(),
-		Nan::New<FunctionTemplate>(Callback)->GetFunction());
+		Nan::GetFunction(Nan::New<FunctionTemplate>(Callback)).ToLocalChecked()
+	);
 
   // initialize our threaded invokation stuff
 #ifdef WIN32
