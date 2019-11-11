@@ -109,7 +109,7 @@ NAN_METHOD(CallbackInfo::Callback) {
 
   // Args: cif pointer, JS function
   // TODO: Check args
-  ffi_cif *cif = (ffi_cif *)Buffer::Data(info[0]->ToObject());
+  ffi_cif *cif = (ffi_cif *) Buffer::Data(Nan::To<v8::Object>(info[0]).ToLocalChecked());
   size_t resultSize = Nan::To<int32_t>(info[1]).FromJust();
   int argc = Nan::To<int32_t>(info[2]).FromJust();
   Local<Function> errorReportCallback = Local<Function>::Cast(info[3]);
