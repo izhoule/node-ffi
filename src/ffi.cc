@@ -137,30 +137,51 @@ NAN_MODULE_INIT(FFI::InitializeBindings) {
   Nan::ForceSet(target,Nan::New<String>("HAS_OBJC").ToLocalChecked(), Nan::New<Boolean>(hasObjc), static_cast<PropertyAttribute>(ReadOnly | DontDelete));
 
   Local<Object> ftmap = Nan::New<Object>();
-  ftmap->Set(Nan::New<String>("void").ToLocalChecked(), WrapPointer((char *)&ffi_type_void));
-  ftmap->Set(Nan::New<String>("uint8").ToLocalChecked(), WrapPointer((char *)&ffi_type_uint8));
-  ftmap->Set(Nan::New<String>("int8").ToLocalChecked(), WrapPointer((char *)&ffi_type_sint8));
-  ftmap->Set(Nan::New<String>("uint16").ToLocalChecked(), WrapPointer((char *)&ffi_type_uint16));
-  ftmap->Set(Nan::New<String>("int16").ToLocalChecked(), WrapPointer((char *)&ffi_type_sint16));
-  ftmap->Set(Nan::New<String>("uint32").ToLocalChecked(), WrapPointer((char *)&ffi_type_uint32));
-  ftmap->Set(Nan::New<String>("int32").ToLocalChecked(), WrapPointer((char *)&ffi_type_sint32));
-  ftmap->Set(Nan::New<String>("uint64").ToLocalChecked(), WrapPointer((char *)&ffi_type_uint64));
-  ftmap->Set(Nan::New<String>("int64").ToLocalChecked(), WrapPointer((char *)&ffi_type_sint64));
-  ftmap->Set(Nan::New<String>("uchar").ToLocalChecked(), WrapPointer((char *)&ffi_type_uchar));
-  ftmap->Set(Nan::New<String>("char").ToLocalChecked(), WrapPointer((char *)&ffi_type_schar));
-  ftmap->Set(Nan::New<String>("ushort").ToLocalChecked(), WrapPointer((char *)&ffi_type_ushort));
-  ftmap->Set(Nan::New<String>("short").ToLocalChecked(), WrapPointer((char *)&ffi_type_sshort));
-  ftmap->Set(Nan::New<String>("uint").ToLocalChecked(), WrapPointer((char *)&ffi_type_uint));
-  ftmap->Set(Nan::New<String>("int").ToLocalChecked(), WrapPointer((char *)&ffi_type_sint));
-  ftmap->Set(Nan::New<String>("float").ToLocalChecked(), WrapPointer((char *)&ffi_type_float));
-  ftmap->Set(Nan::New<String>("double").ToLocalChecked(), WrapPointer((char *)&ffi_type_double));
-  ftmap->Set(Nan::New<String>("pointer").ToLocalChecked(), WrapPointer((char *)&ffi_type_pointer));
+  //ftmap->Set(Nan::New<String>("void").ToLocalChecked(), WrapPointer((char *)&ffi_type_void));
+  Nan::Set(ftmap, Nan::New<String>("void").ToLocalChecked(), WrapPointer((char *)&ffi_type_void));
+  //ftmap->Set(Nan::New<String>("uint8").ToLocalChecked(), WrapPointer((char *)&ffi_type_uint8));
+  Nan::Set(ftmap, Nan::New<String>("uint8").ToLocalChecked(), WrapPointer((char *)&ffi_type_uint8));
+  //ftmap->Set(Nan::New<String>("int8").ToLocalChecked(), WrapPointer((char *)&ffi_type_sint8));
+  Nan::Set(ftmap, Nan::New<String>("int8").ToLocalChecked(), WrapPointer((char *)&ffi_type_sint8));
+  //ftmap->Set(Nan::New<String>("uint16").ToLocalChecked(), WrapPointer((char *)&ffi_type_uint16));
+  Nan::Set(ftmap, Nan::New<String>("uint16").ToLocalChecked(), WrapPointer((char *)&ffi_type_uint16));
+  //ftmap->Set(Nan::New<String>("int16").ToLocalChecked(), WrapPointer((char *)&ffi_type_sint16));
+  Nan::Set(ftmap, Nan::New<String>("int16").ToLocalChecked(), WrapPointer((char *)&ffi_type_sint16));
+  //ftmap->Set(Nan::New<String>("uint32").ToLocalChecked(), WrapPointer((char *)&ffi_type_uint32));
+  Nan::Set(ftmap, Nan::New<String>("uint32").ToLocalChecked(), WrapPointer((char *)&ffi_type_uint32));
+  //ftmap->Set(Nan::New<String>("int32").ToLocalChecked(), WrapPointer((char *)&ffi_type_sint32));
+  Nan::Set(ftmap, Nan::New<String>("int32").ToLocalChecked(), WrapPointer((char *)&ffi_type_sint32));
+  //ftmap->Set(Nan::New<String>("uint64").ToLocalChecked(), WrapPointer((char *)&ffi_type_uint64));
+  Nan::Set(ftmap, Nan::New<String>("uint64").ToLocalChecked(), WrapPointer((char *)&ffi_type_uint64));
+  //ftmap->Set(Nan::New<String>("int64").ToLocalChecked(), WrapPointer((char *)&ffi_type_sint64));
+  Nan::Set(ftmap, Nan::New<String>("int64").ToLocalChecked(), WrapPointer((char *)&ffi_type_sint64));
+  //ftmap->Set(Nan::New<String>("uchar").ToLocalChecked(), WrapPointer((char *)&ffi_type_uchar));
+  Nan::Set(ftmap, Nan::New<String>("uchar").ToLocalChecked(), WrapPointer((char *)&ffi_type_uchar));
+  //ftmap->Set(Nan::New<String>("char").ToLocalChecked(), WrapPointer((char *)&ffi_type_schar));
+  Nan::Set(ftmap, Nan::New<String>("char").ToLocalChecked(), WrapPointer((char *)&ffi_type_schar));
+  //ftmap->Set(Nan::New<String>("ushort").ToLocalChecked(), WrapPointer((char *)&ffi_type_ushort));
+  Nan::Set(ftmap, Nan::New<String>("ushort").ToLocalChecked(), WrapPointer((char *)&ffi_type_ushort));
+  //ftmap->Set(Nan::New<String>("short").ToLocalChecked(), WrapPointer((char *)&ffi_type_sshort));
+  Nan::Set(ftmap, Nan::New<String>("short").ToLocalChecked(), WrapPointer((char *)&ffi_type_sshort));
+  //ftmap->Set(Nan::New<String>("uint").ToLocalChecked(), WrapPointer((char *)&ffi_type_uint));
+  Nan::Set(ftmap, Nan::New<String>("uint").ToLocalChecked(), WrapPointer((char *)&ffi_type_uint));
+  //ftmap->Set(Nan::New<String>("int").ToLocalChecked(), WrapPointer((char *)&ffi_type_sint));
+  Nan::Set(ftmap, Nan::New<String>("int").ToLocalChecked(), WrapPointer((char *)&ffi_type_sint));
+  //ftmap->Set(Nan::New<String>("float").ToLocalChecked(), WrapPointer((char *)&ffi_type_float));
+  Nan::Set(ftmap, Nan::New<String>("float").ToLocalChecked(), WrapPointer((char *)&ffi_type_float));
+  //ftmap->Set(Nan::New<String>("double").ToLocalChecked(), WrapPointer((char *)&ffi_type_double));
+  Nan::Set(ftmap, Nan::New<String>("double").ToLocalChecked(), WrapPointer((char *)&ffi_type_double));
+  //ftmap->Set(Nan::New<String>("pointer").ToLocalChecked(), WrapPointer((char *)&ffi_type_pointer));
+  Nan::Set(ftmap, Nan::New<String>("pointer").ToLocalChecked(), WrapPointer((char *)&ffi_type_pointer));
   // NOTE: "long" and "ulong" get handled in JS-land
   // Let libffi handle "long long"
-  ftmap->Set(Nan::New<String>("ulonglong").ToLocalChecked(), WrapPointer((char *)&ffi_type_ulong));
-  ftmap->Set(Nan::New<String>("longlong").ToLocalChecked(), WrapPointer((char *)&ffi_type_slong));
+  //ftmap->Set(Nan::New<String>("ulonglong").ToLocalChecked(), WrapPointer((char *)&ffi_type_ulong));
+  Nan::Set(ftmap, Nan::New<String>("ulonglong").ToLocalChecked(), WrapPointer((char *)&ffi_type_ulong));
+  //ftmap->Set(Nan::New<String>("longlong").ToLocalChecked(), WrapPointer((char *)&ffi_type_slong));
+  Nan::Set(ftmap, Nan::New<String>("longlong").ToLocalChecked(), WrapPointer((char *)&ffi_type_slong));
 
-  target->Set(Nan::New<String>("FFI_TYPES").ToLocalChecked(), ftmap);
+  //target->Set(Nan::New<String>("FFI_TYPES").ToLocalChecked(), ftmap);
+  Nan::Set(target, Nan::New<String>("FFI_TYPES").ToLocalChecked(), ftmap);
 }
 
 /*
