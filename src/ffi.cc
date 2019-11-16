@@ -22,7 +22,8 @@ NAN_MODULE_INIT(FFI::InitializeStaticFunctions) {
   Local<Object> o = Nan::New<Object>();
 
   // dl functions used by the DynamicLibrary JS class
-  o->Set(Nan::New<String>("dlopen").ToLocalChecked(),  WrapPointer((char *)dlopen));
+  //o->Set(Nan::New<String>("dlopen").ToLocalChecked(),  WrapPointer((char *)dlopen));
+  Nan::Set(o, Nan::New<String>("dlopen").ToLocalChecked(), WrapPointer((char *)dlopen))
   o->Set(Nan::New<String>("dlclose").ToLocalChecked(), WrapPointer((char *)dlclose));
   o->Set(Nan::New<String>("dlsym").ToLocalChecked(),   WrapPointer((char *)dlsym));
   o->Set(Nan::New<String>("dlerror").ToLocalChecked(), WrapPointer((char *)dlerror));
