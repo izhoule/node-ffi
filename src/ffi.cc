@@ -27,12 +27,12 @@ NAN_MODULE_INIT(FFI::InitializeStaticFunctions) {
   //o->Set(Nan::New<String>("dlclose").ToLocalChecked(), WrapPointer((char *)dlclose));
   Nan::Set(o, Nan::New<String>("dlclose").ToLocalChecked(), WrapPointer((char *)dlclose));
   //o->Set(Nan::New<String>("dlsym").ToLocalChecked(),   WrapPointer((char *)dlsym));
-  Nan::Set(o, Nan::New<String>("dlsym").ToLocalChecked(),   WrapPointer((char *)dlsym));
+  Nan::Set(o, Nan::New<String>("dlsym").ToLocalChecked(), WrapPointer((char *)dlsym));
   //o->Set(Nan::New<String>("dlerror").ToLocalChecked(), WrapPointer((char *)dlerror));
-  Nan::Set(Nan::New<String>("dlerror").ToLocalChecked(), WrapPointer((char *)dlerror));
+  Nan::Set(o, Nan::New<String>("dlerror").ToLocalChecked(), WrapPointer((char *)dlerror));
 
   //o->Set(Nan::New<String>("_errno").ToLocalChecked(), WrapPointer((char *)node_ffi_errno));
-  Nan::Set(Nan::New<String>("_errno").ToLocalChecked(), WrapPointer((char *)node_ffi_errno));
+  Nan::Set(o, Nan::New<String>("_errno").ToLocalChecked(), WrapPointer((char *)node_ffi_errno));
   //target->Set(Nan::New<String>("StaticFunctions").ToLocalChecked(), o);
   Nan::Set(target, Nan::New<String>("StaticFunctions").ToLocalChecked(), o);
 }
