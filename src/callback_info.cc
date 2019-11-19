@@ -62,7 +62,7 @@ void CallbackInfo::DispatchToV8(callback_info *info, void *retval, void **parame
         errorFunctionArgv[0] = Nan::New<String>(errorMessage).ToLocalChecked();
 	
         //info->errorFunction->Call(1, errorFunctionArgv);
-	Nan::Call(info->errorFunction, 1, errorFunctionArgv);
+	Nan::Call(1, errorFunctionArgv, info->errorFunction);
     }
     else {
       Nan::ThrowError(errorMessage);
