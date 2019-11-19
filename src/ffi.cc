@@ -40,7 +40,7 @@ NAN_MODULE_INIT(FFI::InitializeStaticFunctions) {
 ///////////////
 
 #define SET_ENUM_VALUE(_value) \
-  Nan::ForceSet(target, Nan::New<String>(#_value).ToLocalChecked(), \
+  Nan::DefineOwnProperty(target, Nan::New<String>(#_value).ToLocalChecked(), \
   Nan::New<Integer>((uint32_t)_value), \
   static_cast<PropertyAttribute>(ReadOnly|DontDelete))
 
